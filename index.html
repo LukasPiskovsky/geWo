@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page about nothing">
+    <meta name="author" content="Lukeace">
+    <title>geWo</title>
+    <link rel="stylesheet" href="style.css">
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1 class="logo">geWo</h1>
+        <h2 class="from-left">From here we go..</h2>
+    </header>
+    <main>
+        <section class="main-section">
+            <article id="greeting">
+                <!-- Pozdrav-->
+            </article>
+            <article id="weather">
+                <!-- Pocasi-->
+            </article>
+            <article id="search-engine">
+                <!-- vyhledavac-->
+            </article>
+
+            <article id="name-day">
+                <!-- Svatek-->
+            </article>
+            <article id="to-do">
+                <!-- ToDO-->
+                <form id="to-do-container">
+                    <input type="text" name="task" id="to-do-input" placeholder="Enter your task">
+                    <input type="date" name="deadline" id="to-do-deadline">
+                    <button id="to-do-button">+</button>
+                </form>
+                <div id="to-do-output">
+
+                </div>
+            </article>
+        </section>
+        <section id="section-settings">
+            <aside id="settings">
+                <!-- Nastaveni-->
+                 <h1>Settings</h1>
+                 <form id="settings-form">
+                    <label>Name: <input type="text" name="name"></label>
+                    <label>Greeting <input type="checkbox" name="greeting"></label>
+                    <label>Weather <input type="checkbox" name="weather"></label>
+                    <label>Google <input type="checkbox" name="google"></label>
+                    <label>ToDo <input type="checkbox" name="todo"></label>
+                    <input type="submit" value="Save">
+                 </form>
+            </aside>
+            <div title="Toggle settings" ><svg id="arrow" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></div>
+            
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script async src="https://cse.google.com/cse.js?cx=426ead034774b455d"></script>
+    <script src="jQuery.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
