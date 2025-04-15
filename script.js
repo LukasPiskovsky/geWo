@@ -1,4 +1,5 @@
 /****Section elements****/
+const form = document.getElementById("settings-form")
 const greeting = document.getElementById("greeting")
 const searchEngine = document.getElementById("search-engine")
 const toDoSection = document.getElementById("to-do")
@@ -21,12 +22,16 @@ arrow.addEventListener("click", function(){
 })
 
 /****Form Settings****/
-let form = document.getElementById("name-form")
+
 let userName = localStorage.getItem("name") || "user"
 form.name.value = userName
-let isGreeting = JSON.parse(localStorage.getItem("greeting")) || false
-let isGoogle = JSON.parse(localStorage.getItem("google")) || false
-let isToDo = JSON.parse(localStorage.getItem("toDo")) || false
+
+let isGreeting = JSON.parse(localStorage.getItem("greeting")) ?? true
+let isWeather = JSON.parse(localStorage.getItem("weather")) ?? true
+let isGoogle = JSON.parse(localStorage.getItem("google")) ?? true
+let isToDo = JSON.parse(localStorage.getItem("toDo")) ?? true
+
+
 
 if(isGreeting){
     greeting.style.display = "block"
@@ -34,6 +39,14 @@ if(isGreeting){
 } else {
     greeting.style.display = "none"
     form.greeting.checked = false
+}
+
+if(isWeather){
+    weather.style.display = "flex"
+    form.weather.checked = true
+} else {
+    weather.style.display = "none"
+    form.weather.checked = false
 }
 
 if(isGoogle){
@@ -52,18 +65,18 @@ if(isToDo){
     form.todo.checked = false
 }
 
-console.log(isGoogle)
-
 form.addEventListener("submit", function(event){
     // event.preventDefault()
     userName = event.target.name.value
     localStorage.setItem("name", userName)
     // alert(`Your name is set to: ${userName}`)
     isGreeting = event.target.greeting.checked;
+    isWeather = event.target.weather.checked
     isGoogle = event.target.google.checked;
     isToDo = event.target.todo.checked;
 
     localStorage.setItem("greeting", JSON.stringify(isGreeting))
+    localStorage.setItem("weather", JSON.stringify(isWeather))
     localStorage.setItem("google", JSON.stringify(isGoogle))
     localStorage.setItem("toDo", JSON.stringify(isToDo))
 
@@ -244,18 +257,27 @@ let apiKey = "d63691526aaf91878f9bbcb823a1f8cb"
 
 let getWeatherApi = async function (){
     try{
-        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
             if(!response.ok){
                 throw new Error(`HTTP error! status: ${response.status}`)
             }
 
         let weatherData = await response.json()
-        
-        // let iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
-        // let weatherImg = document.createElement('img')
-        // weatherImg.src = iconUrl
-        // weather.appendChild(weatherImg)
-        
+        //icon
+        let iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+
+        let weatherImg = document.createElement('img')
+        weatherImg.src = iconUrl
+        // City
+        let cityName = weatherData.name
+        //temperature
+        let currentTemp = Math.round(weatherData.main.temp)
+        let temperature = document.createElement("p")
+        temperature.textContent = `The actual temperature in ${cityName} is ${currentTemp}°C`
+        //append
+        weather.appendChild(temperature)
+        weather.appendChild(weatherImg)
+        console.log(weatherData)
     }
     catch (error){
         console.log("Error fetching weather data:", error)
