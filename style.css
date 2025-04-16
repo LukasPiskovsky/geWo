@@ -60,7 +60,7 @@ main{
 #section-settings{
     position: absolute;
     top:0;
-    height: 100%;
+    height: 90vh;
     min-height: 300px;
     background-color: var(--main-color);
     display: flex;
@@ -304,7 +304,15 @@ main{
 
 /**Footer**/
 footer{
-
+    background-color: var(--main-color);
+    color: var(--txt-color);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    height: 4vh;
+    min-height: 30px;
+    width: 100%;
+    bottom:0;
 }
 
 
