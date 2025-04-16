@@ -29,17 +29,6 @@ let nightModeIcon = "img/dark_mode_white.png"
 
 modeSwitcher.src = localStorage.getItem("mode") || nightModeIcon
 
-// if (modeSwitcher.src.includes(dayModeIcon)) {
-//     document.documentElement.style.setProperty('--main-color', 'oklch(50% 0.05 200)')  //oklch(30% 0.15 200)
-//     document.documentElement.style.setProperty('--minor-color', 'black') //oklch(30% 0.15 210)
-//     document.documentElement.style.setProperty('--bg-color', '#222')  //#eee
-//     document.documentElement.style.setProperty('--txt-color', '#fff')  //#fff
-// } else if (modeSwitcher.src.includes(nightModeIcon)) {
-//     document.documentElement.style.removeProperty('--main-color')
-//     document.documentElement.style.removeProperty('--minor-color')
-//     document.documentElement.style.removeProperty('--bg-color')
-//     document.documentElement.style.removeProperty('--txt-color')
-// }
 
 if (modeSwitcher.src.includes(dayModeIcon)) {
     document.documentElement.style.setProperty('--main-color', 'oklch(40% 0.05 200)')  //oklch(30% 0.15 200)
@@ -263,19 +252,24 @@ let renderToDos = () => {
         let divContainer = document.createElement("div")
         divContainer.className = "div-container"
 
+        let taskContainer = document.createElement("div")
         let spanTask = document.createElement("span");
         spanTask.className = "to-do-span";
         spanTask.textContent = "Task: ";
 
-        let taskText = document.createTextNode(element.task + " ");
-        let deadlineText = document.createTextNode("");
+        let taskText = document.createElement("p")
+        taskText.textContent = element.task + " "
 
+        let deadLineContainer = document.createElement("div")
+        let deadlineText = document.createElement("p");
         let spanDeadline = document.createElement("span");
+
         if(element.deadline != ".."){
             spanDeadline.className = "to-do-span";
             spanDeadline.textContent = "Deadline: ";
+            deadlineText.textContent = element.deadline + " ";
 
-            deadlineText = document.createTextNode(element.deadline + " ");
+
         }
         let delButton = document.createElement("button");
         delButton.className = "del-button";
@@ -286,11 +280,12 @@ let renderToDos = () => {
             localStorage.setItem("toDoList", JSON.stringify(toDo));
             renderToDos();
         });
-        
-        divContainer.appendChild(spanTask);
-        divContainer.appendChild(taskText);
-        divContainer.appendChild(spanDeadline);
-        divContainer.appendChild(deadlineText);
+        taskContainer.appendChild(spanTask)
+        taskContainer.appendChild(taskText)
+        deadLineContainer.appendChild(spanDeadline)
+        deadLineContainer.appendChild(deadlineText)
+        divContainer.appendChild(taskContainer)
+        divContainer.appendChild(deadLineContainer);
         divContainer.appendChild(delButton);
 
         li.appendChild(divContainer);

@@ -214,11 +214,27 @@ main{
 
         .gsc-wrapper{
             padding:20px;
+            width:80%;
+            margin: 0 auto;
         }
-        .gsc-positioningWrapper, .gsc-above-wrapper-area, .gsc-result-info, .gsc-orderby-label {
+        .gsc-above-wrapper-area, .gsc-result-info, .gsc-orderby-label {
             background-color: var(--main-color);
             color: var(--txt-color);
 
+        }
+        .gsc-tabsArea{
+            position: relative;
+            left:45%;
+            transform: translateX(50%), translateY(50%);
+        }
+        .gsc-tabhActive{
+            color: var(--main-color);
+            font-size: 18px;
+        }
+        .gsc-above-wrapper-area{
+            width:75%;
+            border-radius: 20px;
+            margin: 0 auto;
         }
         .gsc-result-info{
             margin-top: 4px;
@@ -309,23 +325,24 @@ main{
         }
         li{
             list-style-type: none;
-            padding:5px 0;
         }
         li:nth-child(even){
             background-color: var(--main-color);
             color:var(--txt-color)
         }
         .div-container{
-            display: block;
+            display: grid;
+            grid-template-columns:5fr 5fr 1fr;
             text-align: start;
-            margin-left: 20%;
+            padding: 10px;
+            p{
+                display:inline;
+            }
         }
         .to-do-span{
-            font-size: 14px;
+            font-size: 12px;
+            font-weight: 900;
             color:brown;
-        }
-        .to-do-span:nth-child(2){
-            margin-left: 20px;
         }
         #to-do-output{
             margin-top: 20px;
@@ -382,4 +399,31 @@ footer{
     .del-button{
         margin-right: 1% !important;
     }
+}
+
+@media (min-width:1550px){
+    .right{
+        position:absolute;
+        right:60px;
+        width:400px !important;
+        z-index: 2;
+        transition: 0.3s all ease;
+    }
+    .right2{
+        position:absolute;
+        width:400px !important;
+        padding: 20px 10px;
+        border-radius: 20px;
+        right:60px;
+        top:190px;
+        z-index: 2;
+        background-color: var(--main-color);
+        transition: 0.3s all ease;
+        button{
+            height: 20px;
+            width: 70px;
+        }
+    }
+
+
 }
