@@ -9,6 +9,7 @@ const toDoForm = document.getElementById("to-do-container")
 // let toDoButton = document.getElementById("to-do-button")
 // let toDoDeadline = document.getElementById("to-do-deadline")
 const weather = document.getElementById("weather")
+const modeSwitcher = document.getElementById("mode-switch")
 
 
 /****Arrow rotation****/
@@ -19,6 +20,58 @@ let rotate = 0
 arrow.addEventListener("click", function(){
         rotate += 180
         arrow.style.transform = `rotate(${rotate}deg)`
+})
+
+/****Mode switch****/
+let dayModeIcon = "img/light_mode_white.png"
+let nightModeIcon = "img/dark_mode_white.png"
+
+modeSwitcher.src = localStorage.getItem("mode") || nightModeIcon
+
+// if (modeSwitcher.src.includes(dayModeIcon)) {
+//     document.documentElement.style.setProperty('--main-color', 'oklch(50% 0.05 200)')  //oklch(30% 0.15 200)
+//     document.documentElement.style.setProperty('--minor-color', 'black') //oklch(30% 0.15 210)
+//     document.documentElement.style.setProperty('--bg-color', '#222')  //#eee
+//     document.documentElement.style.setProperty('--txt-color', '#fff')  //#fff
+// } else if (modeSwitcher.src.includes(nightModeIcon)) {
+//     document.documentElement.style.removeProperty('--main-color')
+//     document.documentElement.style.removeProperty('--minor-color')
+//     document.documentElement.style.removeProperty('--bg-color')
+//     document.documentElement.style.removeProperty('--txt-color')
+// }
+
+if (modeSwitcher.src.includes(dayModeIcon)) {
+    document.documentElement.style.setProperty('--main-color', 'oklch(40% 0.05 200)')  //oklch(30% 0.15 200)
+    document.documentElement.style.setProperty('--minor-color', 'oklch(100% 0.03 210)') //oklch(30% 0.15 210)
+    document.documentElement.style.setProperty('--bg-color', '#222')  //#eee
+    document.documentElement.style.setProperty('--txt-color', '#fff')  //#fff
+    document.documentElement.style.setProperty('--body-color', '#222')  //#fff
+} else if (modeSwitcher.src.includes(nightModeIcon)) {
+    document.documentElement.style.removeProperty('--main-color')
+    document.documentElement.style.removeProperty('--minor-color')
+    document.documentElement.style.removeProperty('--bg-color')
+    document.documentElement.style.removeProperty('--txt-color')
+    document.documentElement.style.removeProperty('--body-color')
+}
+
+
+modeSwitcher.addEventListener("click", (e) => {
+    modeSwitcher.src = modeSwitcher.src.includes(nightModeIcon) ? dayModeIcon : nightModeIcon
+    localStorage.setItem("mode", e.target.src)
+
+    if (modeSwitcher.src.includes(dayModeIcon)) {
+        document.documentElement.style.setProperty('--main-color', 'oklch(40% 0.05 200)')  //oklch(30% 0.15 200)
+        document.documentElement.style.setProperty('--minor-color', 'oklch(100% 0.03 210)') //oklch(30% 0.15 210)
+        document.documentElement.style.setProperty('--bg-color', '#222')  //#eee
+        document.documentElement.style.setProperty('--txt-color', '#fff')  //#fff
+        document.documentElement.style.setProperty('--body-color', '#222')  //#fff
+    } else if (modeSwitcher.src.includes(nightModeIcon)) {
+        document.documentElement.style.removeProperty('--main-color')
+        document.documentElement.style.removeProperty('--minor-color')
+        document.documentElement.style.removeProperty('--bg-color')
+        document.documentElement.style.removeProperty('--txt-color')
+        document.documentElement.style.removeProperty('--body-color')
+    }
 })
 
 /****Form Settings****/

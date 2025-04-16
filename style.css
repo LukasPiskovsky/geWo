@@ -4,14 +4,18 @@
     --minor-color: oklch(30% 0.15 210) ;
     --bg-color: #eee;
     --txt-color: #fff;
+    --body-color: #fff;
 }
 /**General**/
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
+    transition: all 0.3s ease;
 }
-
+body{
+    background-color: var(--body-color);
+}
 /**Blur**/
 .blur{
     filter:blur(6px);
@@ -37,8 +41,14 @@ header{
         font-size: 16px;
         margin-left:0%;
         font-style: italic;
-        color:var(--bg-color);
+        color:var(--txt-color);
 
+    }
+    #mode-switch{
+        position:absolute;
+        right:100px;
+        top: 25px;
+        cursor: pointer;
     }
 }
 
@@ -58,6 +68,7 @@ main{
     justify-content: center;
     align-items: center;
     color: var(--txt-color);
+    transition: none;
     h1{
         text-align: center;
         margin-bottom: 15px;
@@ -72,10 +83,12 @@ main{
         padding: 10px;
         margin-left: 10px;
         border-radius: 10px;
+        transition: none;
     }
 
     #arrow{
         cursor: pointer;
+        fill:var(--txt-color);
     }
 
     form{
@@ -93,7 +106,8 @@ main{
         }
         input[type="submit"]{
             width: 150px;
-            background-color: var(--txt-color);
+            background-color: var(--main-color);
+            color: var(--txt-color);
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -105,6 +119,7 @@ main{
         }
         input[type="submit"]:hover{
             background-color: var(--bg-color);
+            color:var(--minor-color);
             transition: all 0.3s ease;
         }
         label{
@@ -158,13 +173,15 @@ main{
     }
     #search-engine{
         text-align: center;
-        a{
+        #google-text{
             color: var(--main-color);
             text-decoration: none;
         }
         div{
             text-align:start;
             font-size: 17px;
+            background-color: var(--bg-color);
+            border:none;
         }
         tr{
             display: flex;
@@ -174,9 +191,37 @@ main{
         }
         button{
             cursor: pointer;
+            background-color: var(--main-color);
+            border:none;
         }
         .gsc-input{
             width:50%;
+        }
+        #gsc-i-id1{
+            padding: 8px!important;
+            font-size: 17px;
+        }
+
+        .gsc-wrapper{
+            padding:20px;
+        }
+        .gsc-positioningWrapper, .gsc-above-wrapper-area, .gsc-result-info, .gsc-orderby-label {
+            background-color: var(--main-color);
+            color: var(--txt-color);
+            padding: 5px 15px;
+        }
+        .gsc-result-info{
+            margin-top: 4px;
+            margin-right: 100px;
+        }
+        .gs-snippet{
+            color:var(--minor-color)
+        }
+        .gs-title{
+            color:rgba(50, 82, 223, 0.836);
+        }
+        .gs-title:hover{
+            color:var(--main-color);
         }
     }
     #to-do{
@@ -236,7 +281,8 @@ main{
             padding:5px 0;
         }
         li:nth-child(even){
-            background-color: var(--txt-color);
+            background-color: var(--main-color);
+            color:var(--txt-color)
         }
         .div-container{
             display: block;
@@ -285,6 +331,9 @@ footer{
     }
     #to-do input{
         width: 130px
+    }
+    #weather{
+        width:450px !important;
     }
 }
 
