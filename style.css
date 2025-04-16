@@ -419,6 +419,9 @@ footer{
         z-index: 2;
         background-color: var(--main-color);
         transition: 0.3s all ease;
+        h2{
+            color:var(--txt-color);
+        }
         button{
             height: 20px;
             width: 70px;
