@@ -138,18 +138,18 @@ renderGreet()
 /****Search Engine****/
 
 
-let renderSearchEngine = () => {
+// let renderSearchEngine = () => {
 
-    let h2 = document.createElement("h2")
-    h2.innerHTML = "Search by <a href='https://www.google.com' target='_blank'>google</a>"
-    searchEngine.appendChild(h2)
+//     let h2 = document.createElement("h2")
+//     h2.innerHTML = "Search by <a href='https://www.google.com' target='_blank'>google</a>"
+//     searchEngine.appendChild(h2)
 
-    let div = document.createElement("div")
-    div.className = "gcse-search"
-    searchEngine.appendChild(div)
-}
+//     let div = document.createElement("div")
+//     div.className = "gcse-search"
+//     searchEngine.appendChild(div)
+// }
 
-renderSearchEngine()
+// renderSearchEngine()
 
 /****ToDo****/
 

@@ -10,12 +10,7 @@ $(function(){
 
 $(function(){
     $("#arrow").click(function(){
-        $("#settings").toggle(150)
-    })
-});
-
-$(function(){
-    $("#arrow").click(function(){
-        $(".main-section").toggleClass("blur")
+        $("#settings").toggle(150);
+        $(".main-section").toggleClass("blur");
     })
 });
