@@ -326,7 +326,7 @@ let getWeatherApi = async function (){
         //temperature
         let currentTemp = Math.round(weatherData.main.temp)
         let temperature = document.createElement("p")
-        temperature.textContent = `The actual temperature in ${cityName} is ${currentTemp}°C`
+        temperature.textContent = `Current temperature in ${cityName} is ${currentTemp}°C`
         //append
         weather.appendChild(temperature)
         weather.appendChild(weatherImg)
