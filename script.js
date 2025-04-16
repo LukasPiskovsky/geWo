@@ -1,5 +1,6 @@
 /****Section elements****/
 const form = document.getElementById("settings-form")
+const settingsSection = document.getElementById("section-settings")
 const greeting = document.getElementById("greeting")
 const searchEngine = document.getElementById("search-engine")
 const toDoSection = document.getElementById("to-do")
@@ -75,6 +76,23 @@ modeSwitcher.addEventListener("click", (e) => {
 })
 
 /****Form Settings****/
+//setings height
+// let documentHeight = Math.max(
+//     document.body.scrollHeight,
+//     document.documentElement.scrollHeight,
+//     document.body.offsetHeight,
+//     document.documentElement.offsetHeight,
+//     document.body.clientHeight,
+//     document.documentElement.clientHeight
+//   );
+// let usedHeight = 110
+// let settingsHeight = documentHeight - usedHeight
+
+// console.log(settingsHeight)
+
+// settingsSection.style.height = `${settingsHeight}px`
+
+
 
 let userName = localStorage.getItem("name") || "user"
 form.name.value = userName
