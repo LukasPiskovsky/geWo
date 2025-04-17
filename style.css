@@ -16,6 +16,9 @@
 body{
     background-color: var(--body-color);
 }
+.main-section{
+    position: relative;
+}
 /**Blur**/
 .blur{
     filter:blur(6px);
@@ -376,7 +379,8 @@ footer{
 @media (min-width:1550px){
     .right{
         position:absolute;
-        right:20px;
+        right:100px;
+        transform: translateX(80%);
         width:400px !important;
         z-index: 2;
         transition: 0.3s all ease;
@@ -389,7 +393,8 @@ footer{
         width:400px !important;
         padding: 20px 10px;
         border-radius: 20px;
-        right:20px;
+        right:100px;
+        transform: translateX(80%);
         top:196px;
         z-index: 2;
         background-color: var(--main-color);
