@@ -492,6 +492,9 @@ footer{
         .gsc-control-cse{
             padding: 2px;
         }
+        .gsc-positioningWrapper{
+            width: 80%;
+        }
     }
 
 
