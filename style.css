@@ -392,7 +392,7 @@ footer{
 
 /**MediaQuery**/
 
-@media (min-width:1550px){
+@media (min-width:1660px){
     .right{
         position:absolute;
         right:85px;
