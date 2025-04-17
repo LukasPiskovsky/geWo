@@ -438,7 +438,7 @@ footer{
     }
 }
 
-@media (max-width:1550px){
+@media (max-width:1660px){
     #view-switch{
         display: none;
     }
