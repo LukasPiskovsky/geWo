@@ -1,30 +1,20 @@
-/****Section elements****/
+/****ELEMENTS****/
 const form = document.getElementById("settings-form")
+const modeSwitcher = document.getElementById("mode-switch")
+const viewSwitcher = document.getElementById("view-switch")
 const settingsSection = document.getElementById("section-settings")
 const greeting = document.getElementById("greeting")
-const searchEngine = document.getElementById("search-engine")
+const weather = document.getElementById("weather")
 const toDoSection = document.getElementById("to-do")
 const toDoOutput = document.getElementById("to-do-output")
 const toDoForm = document.getElementById("to-do-container")
+const searchEngine = document.getElementById("search-engine")
 // let toDoInput = document.getElementById("to-do-input")
 // let toDoButton = document.getElementById("to-do-button")
 // let toDoDeadline = document.getElementById("to-do-deadline")
-const weather = document.getElementById("weather")
-const modeSwitcher = document.getElementById("mode-switch")
-const viewSwitcher = document.getElementById("view-switch")
 
 
-/****Arrow rotation****/
-let arrow = document.getElementById("arrow")
-let settings = document.getElementById("settings")
-let rotate = 0
-
-arrow.addEventListener("click", function(){
-        rotate += 180
-        arrow.style.transform = `rotate(${rotate}deg)`
-})
-
-/****Switchers****/
+/****SWITCHERS****/
 
 //Mode
 let dayModeIcon = "img/light_mode_white.png"
@@ -47,7 +37,6 @@ let updateMode = () => {
         document.documentElement.style.removeProperty('--body-color')
     }
 }
-
 updateMode()
 
 modeSwitcher.addEventListener("click", (e) => {
@@ -58,7 +47,6 @@ modeSwitcher.addEventListener("click", (e) => {
 })
 
 //view
-
 let wideView = "img/splitscreen_wide.png"
 let tallView = "img/splitscreen_tall.png"
 
@@ -69,8 +57,8 @@ let updateView = () =>{
         weather.className = "right"
         toDoSection.className = "right2"
     } else if(viewSwitcher.src.includes(wideView)){
-                weather.className = ""
-                toDoSection.className = ""
+        weather.className = ""
+        toDoSection.className = ""
     }
 }
 updateView()
@@ -82,37 +70,26 @@ viewSwitcher.addEventListener("click", (e) => {
     updateView()
 })
 
+/****SETTINGS****/
+//Arrow Rotation
+let arrow = document.getElementById("arrow")
+let settings = document.getElementById("settings")
+let rotate = 0
 
+arrow.addEventListener("click", function(){
+        rotate += 180
+        arrow.style.transform = `rotate(${rotate}deg)`
+})
 
-
-/****Form Settings****/
-//setings height
-// let documentHeight = Math.max(
-//     document.body.scrollHeight,
-//     document.documentElement.scrollHeight,
-//     document.body.offsetHeight,
-//     document.documentElement.offsetHeight,
-//     document.body.clientHeight,
-//     document.documentElement.clientHeight
-//   );
-// let usedHeight = 110
-// let settingsHeight = documentHeight - usedHeight
-
-// console.log(settingsHeight)
-
-// settingsSection.style.height = `${settingsHeight}px`
-
-
-
+//User name
 let userName = localStorage.getItem("name") || "user"
 form.name.value = userName
 
+//What sections to display
 let isGreeting = JSON.parse(localStorage.getItem("greeting")) ?? true
 let isWeather = JSON.parse(localStorage.getItem("weather")) ?? true
 let isGoogle = JSON.parse(localStorage.getItem("google")) ?? true
 let isToDo = JSON.parse(localStorage.getItem("toDo")) ?? true
-
-
 
 if(isGreeting){
     greeting.style.display = "block"
@@ -163,8 +140,8 @@ form.addEventListener("submit", function(event){
 
 })
 
-/****Greeting****/
-
+/****GREETING****/
+// Creating date
 let date = new (Date)
 let hours = date.getHours()
 let day = date.getDay()
@@ -175,9 +152,7 @@ let dateDay = dateJ.substring(8, 10)
 let dateToShow = `${dateDay}.${dateMonth}.${dateYear}`
 
 let renderGreet = () => {
-    /**Variably pro uchovani potrebnych datumu */
 
-    console.log(dateToShow)
     let greetingText = null 
     /**Urceni dne */
     switch (day){
@@ -207,8 +182,6 @@ let renderGreet = () => {
         greetingText = "Good evening"
     }
 
-    console.log(day)
-
     let p = document.createElement("p")
     p.textContent = `${greetingText} ${userName} today is ${day} ${dateToShow}`
     greeting.appendChild(p)
@@ -216,26 +189,12 @@ let renderGreet = () => {
 
 renderGreet()
 
-/****Search Engine****/
+/****TODO****/
 
-
-// let renderSearchEngine = () => {
-
-//     let h2 = document.createElement("h2")
-//     h2.innerHTML = "Search by <a href='https://www.google.com' target='_blank'>google</a>"
-//     searchEngine.appendChild(h2)
-
-//     let div = document.createElement("div")
-//     div.className = "gcse-search"
-//     searchEngine.appendChild(div)
-// }
-
-// renderSearchEngine()
-
-/****ToDo****/
-
+//toDo array
 let toDo = JSON.parse(localStorage.getItem("toDoList")) || []
-/**add task**/
+
+//adding task
 toDoForm.addEventListener("submit", (event) => {
     event.preventDefault()
     console.log("Form submitted");
@@ -256,11 +215,12 @@ toDoForm.addEventListener("submit", (event) => {
     renderToDos()
 })
 
-/**rendering todos**/
+//rendering h2
 let h2 = document.createElement("h2")
 h2.textContent = "To Do List"
 toDoSection.prepend(h2)
 
+//rendering toDos
 let renderToDos = () => {
     toDoOutput.innerHTML = "";
 
@@ -316,7 +276,7 @@ let renderToDos = () => {
 };
 renderToDos()
 
-/**deadline alert**/
+//deadline alert
 setTimeout(()=>{
     toDo.forEach((element) =>{
         if(element.deadline == dateToShow){
@@ -325,8 +285,7 @@ setTimeout(()=>{
     })
 }, 1200)
 
-/****Weather****/
-
+/****WEATHER****/
 let latitude = ""
 let longitude = ""
 
@@ -337,8 +296,6 @@ function getLatLon(position) {
   longitude = position.coords.longitude;
   getWeatherApi()
 }
-
-
 
 let apiKey = "d63691526aaf91878f9bbcb823a1f8cb"
 
@@ -370,3 +327,44 @@ let getWeatherApi = async function (){
         console.log("Error fetching weather data:", error)
     }
 }
+
+
+
+
+/****TRASHBAG****/
+
+
+
+/****SEARCH ENGINE****/
+// let renderSearchEngine = () => {
+
+//     let h2 = document.createElement("h2")
+//     h2.innerHTML = "Search by <a href='https://www.google.com' target='_blank'>google</a>"
+//     searchEngine.appendChild(h2)
+
+//     let div = document.createElement("div")
+//     div.className = "gcse-search"
+//     searchEngine.appendChild(div)
+// }
+
+// renderSearchEngine()
+
+
+/****HEIGHT OF SETTING SECTION****/
+//setings height
+// let documentHeight = Math.max(
+//     document.body.scrollHeight,
+//     document.documentElement.scrollHeight,
+//     document.body.offsetHeight,
+//     document.documentElement.offsetHeight,
+//     document.body.clientHeight,
+//     document.documentElement.clientHeight
+//   );
+// let usedHeight = 110
+// let settingsHeight = documentHeight - usedHeight
+
+// console.log(settingsHeight)
+
+// settingsSection.style.height = `${settingsHeight}px`
+
+
