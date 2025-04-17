@@ -47,11 +47,17 @@ header{
         color:var(--txt-color);
 
     }
-    #mode-switch{
+
+    .switcher{
         position:absolute;
-        right:100px;
         top: 25px;
         cursor: pointer;
+    }
+    #mode-switch{
+        right:100px;
+    }
+    #view-switch{
+        right:140px;
     }
 }
 
@@ -414,7 +420,12 @@ footer{
             margin-bottom: 30px;
         }
     }
+}
 
+@media (max-width:1550px){
+    #view-switch{
+        display: none;
+    }
 }
 
 @media (max-width:960px){
@@ -469,6 +480,9 @@ footer{
     }
     #mode-switch{
         right:30px !important;
+    }
+    #view-switch{
+        right:70px !important;
     }
 
     #weather{

@@ -11,6 +11,7 @@ const toDoForm = document.getElementById("to-do-container")
 // let toDoDeadline = document.getElementById("to-do-deadline")
 const weather = document.getElementById("weather")
 const modeSwitcher = document.getElementById("mode-switch")
+const viewSwitcher = document.getElementById("view-switch")
 
 
 /****Arrow rotation****/
@@ -23,32 +24,15 @@ arrow.addEventListener("click", function(){
         arrow.style.transform = `rotate(${rotate}deg)`
 })
 
-/****Mode switch****/
+/****Switchers****/
+
+//Mode
 let dayModeIcon = "img/light_mode_white.png"
 let nightModeIcon = "img/dark_mode_white.png"
 
 modeSwitcher.src = localStorage.getItem("mode") || dayModeIcon
 
-
-if (modeSwitcher.src.includes(dayModeIcon)) {
-    document.documentElement.style.setProperty('--main-color', 'oklch(40% 0.05 200)')  //oklch(30% 0.15 200)
-    document.documentElement.style.setProperty('--minor-color', 'oklch(100% 0.03 210)') //oklch(30% 0.15 210)
-    document.documentElement.style.setProperty('--bg-color', '#222')  //#eee
-    document.documentElement.style.setProperty('--txt-color', '#fff')  //#fff
-    document.documentElement.style.setProperty('--body-color', '#222')  //#fff
-} else if (modeSwitcher.src.includes(nightModeIcon)) {
-    document.documentElement.style.removeProperty('--main-color')
-    document.documentElement.style.removeProperty('--minor-color')
-    document.documentElement.style.removeProperty('--bg-color')
-    document.documentElement.style.removeProperty('--txt-color')
-    document.documentElement.style.removeProperty('--body-color')
-}
-
-
-modeSwitcher.addEventListener("click", (e) => {
-    modeSwitcher.src = modeSwitcher.src.includes(nightModeIcon) ? dayModeIcon : nightModeIcon
-    localStorage.setItem("mode", e.target.src)
-
+let updateMode = () => {
     if (modeSwitcher.src.includes(dayModeIcon)) {
         document.documentElement.style.setProperty('--main-color', 'oklch(40% 0.05 200)')  //oklch(30% 0.15 200)
         document.documentElement.style.setProperty('--minor-color', 'oklch(100% 0.03 210)') //oklch(30% 0.15 210)
@@ -62,7 +46,44 @@ modeSwitcher.addEventListener("click", (e) => {
         document.documentElement.style.removeProperty('--txt-color')
         document.documentElement.style.removeProperty('--body-color')
     }
+}
+
+updateMode()
+
+modeSwitcher.addEventListener("click", (e) => {
+    modeSwitcher.src = modeSwitcher.src.includes(dayModeIcon) ? nightModeIcon : dayModeIcon
+    localStorage.setItem("mode", e.target.src)
+
+    updateMode()
 })
+
+//view
+
+let wideView = "img/splitscreen_wide.png"
+let tallView = "img/splitscreen_tall.png"
+
+viewSwitcher.src = localStorage.getItem("view") ?? wideView
+
+let updateView = () =>{
+    if(viewSwitcher.src.includes(tallView)){
+        weather.className = "right"
+        toDoSection.className = "right2"
+    } else if(viewSwitcher.src.includes(wideView)){
+                weather.className = ""
+                toDoSection.className = ""
+    }
+}
+updateView()
+
+viewSwitcher.addEventListener("click", (e) => {
+    viewSwitcher.src = viewSwitcher.src.includes(wideView) ? tallView : wideView
+    localStorage.setItem("view", e.target.src)
+    
+    updateView()
+})
+
+
+
 
 /****Form Settings****/
 //setings height
@@ -349,11 +370,3 @@ let getWeatherApi = async function (){
         console.log("Error fetching weather data:", error)
     }
 }
-
-
-
-
-
-
-
-/****Name-day****/
