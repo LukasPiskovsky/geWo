@@ -27,7 +27,7 @@ arrow.addEventListener("click", function(){
 let dayModeIcon = "img/light_mode_white.png"
 let nightModeIcon = "img/dark_mode_white.png"
 
-modeSwitcher.src = localStorage.getItem("mode") || nightModeIcon
+modeSwitcher.src = localStorage.getItem("mode") || dayModeIcon
 
 
 if (modeSwitcher.src.includes(dayModeIcon)) {
