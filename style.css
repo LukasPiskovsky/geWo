@@ -139,7 +139,7 @@ main{
     display: flex;
     flex-direction: column;
     min-height: 300px;
-    gap:25px;
+    gap:20px;
     width: 70%;
     margin: 0 auto;
     padding: 50px 0;
@@ -448,16 +448,19 @@ footer{
     }
 
     #weather{
-        padding: 10px 0px !important;
-        
+        padding: 15px 10px 0px 10px !important;
+        width: 70% !important;
+        p{
+            font-size: 14px !important;
+        }
     }
     #to-do{
         input[type="text"]{
-            width:200px !important;
+            width:1800px !important;
             margin-left: 20px !important;
         }
         input[type="date"]{
-            width:100px !important;
+            width:140px !important;
         }
         button{
             padding: 3px 10px !important;
