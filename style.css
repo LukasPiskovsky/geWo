@@ -508,7 +508,17 @@ footer{
         padding: 25px 25px;
     }
     #section-settings{
-        height:85vh
+        top:123px;
+        left:40px;
+        height: 0px;
+        min-height: 0px;
+        width: 80px;
+        z-index: 20;
+    }
+    #arrow{
+        position: absolute;
+        top:-150px;
+        left:-30px;
     }
     #mode-switch{
         right:30px !important;
@@ -536,7 +546,6 @@ footer{
         }
         input[type="text"]{
             width:170px !important;
-            margin-left: 20px !important;
         }
         input[type="date"]{
             width:150px !important;
@@ -568,10 +577,13 @@ footer{
             padding: 2px;
         }
         .gsc-tabHeader:nth-child(1){
-            margin-left: 40% !important;
+            margin-left: 100px !important;
         }
         .gsib_a{
             margin-left:20px;
+        }
+        button{
+            margin-left: -70px;
         }
     }
 
