@@ -374,6 +374,10 @@ main{
             color:var(--minor-color);
             font-size: 14px;
         }
+        .gs-previewLink, .gs-previewSize, .gs-previewUrl, .gs-previewDescription{
+            color: var(--minor-color);
+        }
+
         .gsc-positioningWrapper{
             width: 70%;
         }
@@ -577,7 +581,7 @@ footer{
             padding: 2px;
         }
         .gsc-tabHeader:nth-child(1){
-            margin-left: 100px !important;
+            margin-left: 40px !important;
         }
         .gsib_a{
             margin-left:20px;
