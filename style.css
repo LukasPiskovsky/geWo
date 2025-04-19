@@ -356,14 +356,14 @@ main{
             color: var(--main-color);
             font-size: 18px;
         }
-        .gs-title{
+        .gs-title, .gs-previewLink{
             color:rgba(50, 82, 223, 0.836);
             font-size: 18px;
         }
-        .gs-title:hover, .gs-title:hover b{
+        .gs-title:hover, .gs-title:hover b, .gs-previewLink:hover{
             color:rgba(7, 45, 212, 0.9);
         }
-        .gs-title:visited, .gs-title:visited b{
+        .gs-title:visited, .gs-title:visited b, .gs-previewLink:visited{
             color:rgba(151, 23, 168, 0.9);
         }
         .gs-visibleUrl{
@@ -374,10 +374,9 @@ main{
             color:var(--minor-color);
             font-size: 14px;
         }
-        .gs-previewLink, .gs-previewSize, .gs-previewUrl, .gs-previewDescription{
+        .gs-previewSize, .gs-previewUrl, .gs-previewDescription{
             color: var(--minor-color);
         }
-
         .gsc-positioningWrapper{
             width: 70%;
         }
