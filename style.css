@@ -2,9 +2,9 @@
 :root{
     --main-color: oklch(30% 0.15 200) ;
     --minor-color: oklch(30% 0.15 210) ;
-    --bg-color: #eee;
+    --bg-color: #d3d1a5;
     --txt-color: #fff;
-    --body-color: #fff;
+    --body-color: #d3d1a5;
 }
 /**General**/
 *{
@@ -78,7 +78,7 @@ main{
 #section-settings{
     position: absolute;
     top:0;
-    height: 90vh;
+    /* height: 100vh; */
     min-height: 300px;
     background-color: var(--main-color);
     display: flex;
@@ -327,6 +327,10 @@ main{
             border:none;
             padding: 15px;
             border-radius: 20px;
+            svg{
+                fill:var(--txt-color)
+            }
+
         }
         #gs_st50{
             right:60px;
@@ -513,7 +517,7 @@ footer{
     #section-settings{
         top:123px;
         left:40px;
-        height: 0px;
+        height: 0px !important;
         min-height: 0px;
         width: 80px;
         z-index: 20;
@@ -555,7 +559,7 @@ footer{
         }
         button{
             padding: 3px 10px !important;
-            margin-left: -20px !important;
+            margin-left: 0px !important;
         }
     }
 

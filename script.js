@@ -24,11 +24,11 @@ modeSwitcher.src = localStorage.getItem("mode") || dayModeIcon
 
 let updateMode = () => {
     if (modeSwitcher.src.includes(dayModeIcon)) {
-        document.documentElement.style.setProperty('--main-color', 'oklch(40% 0.05 200)')  //oklch(30% 0.15 200)
-        document.documentElement.style.setProperty('--minor-color', 'oklch(100% 0.03 210)') //oklch(30% 0.15 210)
-        document.documentElement.style.setProperty('--bg-color', '#222')  //#eee
-        document.documentElement.style.setProperty('--txt-color', '#fff')  //#fff
-        document.documentElement.style.setProperty('--body-color', '#222')  //#fff
+        document.documentElement.style.setProperty('--main-color', 'oklch(37% 0.045 200)')  //oklch(30% 0.15 200)
+        document.documentElement.style.setProperty('--minor-color', 'oklch(85% 0.1 80)') //oklch(30% 0.15 210)
+        document.documentElement.style.setProperty('--bg-color', '#252525')  //#eee
+        document.documentElement.style.setProperty('--txt-color', 'oklch(85% 0.1 80)')  //#fff
+        document.documentElement.style.setProperty('--body-color', '#252525')  //#fff
     } else if (modeSwitcher.src.includes(nightModeIcon)) {
         document.documentElement.style.removeProperty('--main-color')
         document.documentElement.style.removeProperty('--minor-color')
@@ -328,6 +328,23 @@ let getWeatherApi = async function (){
     }
 }
 
+/****HEIGHT OF SETTING SECTION****/
+//setings height
+setInterval(()=>{
+    let documentHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+      );
+    let usedHeight = 110
+    let settingsHeight = documentHeight - usedHeight
+    
+    settingsSection.style.height = `${settingsHeight}px`
+})
+
 
 
 
@@ -350,21 +367,6 @@ let getWeatherApi = async function (){
 // renderSearchEngine()
 
 
-/****HEIGHT OF SETTING SECTION****/
-//setings height
-// let documentHeight = Math.max(
-//     document.body.scrollHeight,
-//     document.documentElement.scrollHeight,
-//     document.body.offsetHeight,
-//     document.documentElement.offsetHeight,
-//     document.body.clientHeight,
-//     document.documentElement.clientHeight
-//   );
-// let usedHeight = 110
-// let settingsHeight = documentHeight - usedHeight
 
-// console.log(settingsHeight)
-
-// settingsSection.style.height = `${settingsHeight}px`
 
 
