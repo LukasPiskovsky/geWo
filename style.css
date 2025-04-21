@@ -2,9 +2,10 @@
 :root{
     --main-color: oklch(30% 0.15 200) ;
     --minor-color: oklch(30% 0.15 210) ;
-    --bg-color: #d3d1a5;
+    --bg-color: #d3caa5;
     --txt-color: #fff;
-    --body-color: #d3d1a5;
+    /* --body-color: #d3d1a5; */
+    --body-color: #ffffff;
 }
 /**General**/
 *{
@@ -19,7 +20,10 @@
     font-family: "Inter", sans-serif;
 }
 body{
-    background-color: var(--body-color);
+    background: linear-gradient(var(--bg-color) 40%, var(--body-color) 100%);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    /* background-color: var(--body-color); */
 }
 
 h1, h2{
@@ -169,7 +173,8 @@ main{
     margin: 0 auto;
     padding: 50px 0;
     color: var(--minor-color);
-    background-color: var(--bg-color);
+    /* background-color: var(--bg-color); */
+    background-color: #ffffff00;
 
     h2{
         font-size: 30px;
@@ -266,7 +271,13 @@ main{
         }
         li{
             list-style-type: none;
-            border-radius: 10px;
+
+        }
+        li:first-child{
+            border-radius: 10px 10px 0 0;
+        }
+        li:last-child{
+            border-radius:0 0 10px 10px;
         }
         li:nth-child(even){
             background-color: var(--main-color);
@@ -298,6 +309,7 @@ main{
 }
     #search-engine{
         text-align: center;
+
         #google-text{
             color: var(--main-color);
             text-decoration: none;
@@ -305,7 +317,8 @@ main{
         div{
             text-align:start;
             font-size: 17px;
-            background-color: var(--bg-color);
+            /* background-color: var(--bg-color); */
+            background-color: #ffffff00;
             border:none;
         }
         tr{
