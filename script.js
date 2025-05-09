@@ -181,10 +181,19 @@ let renderGreet = () => {
     } else {
         greetingText = "Good evening"
     }
+    let textNode1 = `${greetingText} ${userName}`
+    let textNode2 = `today is ${day} ${dateToShow}`
+    let p1 = document.createElement("p")
+    let p2 = document.createElement("p")
+    let div = document.createElement("div")
 
-    let p = document.createElement("p")
-    p.textContent = `${greetingText} ${userName} today is ${day} ${dateToShow}`
-    greeting.appendChild(p)
+    p1.textContent = textNode1
+    p2.textContent = textNode2
+
+    div.appendChild(p1)
+    div.appendChild(p2)
+
+    greeting.appendChild(div)
 }
 
 renderGreet()

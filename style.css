@@ -173,7 +173,7 @@ main{
     gap:20px;
     width: 70%;
     margin: 0 auto;
-    padding: 50px 0;
+    padding: 10px 0;
     color: var(--minor-color);
     /* background-color: var(--bg-color); */
     background-color: #ffffff00;
@@ -187,7 +187,9 @@ main{
         font-size: 14px;
         text-align: center;
         user-select: none;
+        
     }
+
     #weather{
         display: flex;
         flex-direction: column;
@@ -441,7 +443,7 @@ footer{
         border-radius: 20px;
         right:85px;
         transform: translateX(80%);
-        top:196px;
+        top:156px;
         z-index: 2;
         background-color: var(--main-color);
         transition: 0.3s all ease;
@@ -528,7 +530,7 @@ footer{
 @media (max-width:600px){
     .main-section{
         gap:10px;
-        padding: 25px 25px;
+        padding: 10px 10px;
     }
     #section-settings{
         top:123px;
